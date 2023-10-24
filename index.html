@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardápio de Geladinhos Gourmet</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script type="text/javascript" src="" charset="UTF-8"></script><style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('seu_plano_de_fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(46, 204, 113, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .geladinho {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .geladinho h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .geladinho p {
+            font-size: 1.2em;
+        }
+
+        .geladinho img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #promocao-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #promocao-container h2 {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .quantity-select {
+            font-size: 1.2em;
+            width: 60px;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .calculate-button {
+            background-color: #2ecc71;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculate-button:hover {
+            background-color: #27ae60;
+        }
+
+        #resultado {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+  /* Estilos para o alerta */
+  .alert {
+    display: none;
+    padding: 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    animation: slide-in 1s ease-in-out;
+  }
+
+  .closebtn {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Estilos de animação */
+  @keyframes slide-in {
+    from {
+      top: -50px;
+    }
+    to {
+      top: 0;
+    }
+  }
+  <style>
+/* ... promoção ... */
+
+#promocao-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px auto; /* Centraliza a promoção na página */
+    max-width: 400px; /* Define a largura máxima da promoção para telas menores */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#promocao-container h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+    color: #333; /* Cor do título da promoção */
+}
+
+.quantity-select {
+    font-size: 1.2em;
+    width: 60px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Adiciona uma borda à caixa de seleção */
+}
+
+.calculate-button {
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 10px 0; /* Adiciona um espaço entre a caixa de seleção e o botão */
+}
+
+.calculate-button:hover {
+    background-color: #27ae60;
+}
+
+#resultado {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: #333; /* Cor do resultado */
+}
+
+/* Estilos para a seção de contato */
+.contact-container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  transition: background-color 0.3s ease;
+}
+
+.contact-container:hover {
+  background-color: #e0e0e0;
+}
+
+.contact-container h2 {
+  font-size: 1.8em;
+  margin: 10px 0;
+  color: #333;
+}
+
+.contact-container p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #666;
+}
+
+/* Estilos para o botão de contato */
+.contact-button {
+  display: inline-block;
+  background-color: #25d366;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button i {
+  margin-right: 5px;
+}
+
+.contact-button:hover {
+  background-color: #128c7e;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .contact-container {
+    max-width: 100%;
+  }
+}
+
+
+</style>
+
+    </style>
+</head>
+<body>
+<header>
+<h1>Cardápio de Geladinhos Gourmet</h1>
+</header>
+
+<div id="alert-container" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <strong>Promoção:</strong> Ganhe 10% de desconto na compra de 5 geladinhos ou mais!
+</div>
+
+  
+
+<div class="menu-container">
+<div class="geladinho">
+<img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2021/12/geladinhomorango.jpg" alt="Musse de morango com geleia de morango">
+<h2>Musse de morango com geleia de morango</h2>
+<p>Delicioso geladinho com sabor de Musse de morango com geleia de morango.</p>
+<p>Preço: R$ 4,00</p>
+<h3>Disponivel para entrega</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://receitasdepesos.com.br/wp-content/uploads/2020/01/dindin-gourmet-de-maracuja%CC%81-640x400-1.jpg" alt="Musse de maracujá com geleia de maracujá">
+<h2>Musse de maracujá com geleia de maracujá</h2>
+<p>Geladinho de Musse de maracujá com geleia de maracujá.</p>
+<p>Preço: R$ 4,00</p>
+<h3>Disponivel para entrega</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://sorvete.frutinho.com.br/imagens/fornecedor-de-geladinho-de-amendoim.jpg" alt="Musse de maracujá puro">
+<h2>Musse de maracujá puro</h2>
+<p>Geladinho refrescante de maracujá puro.</p>
+<p>Preço: R$ 4,00</p>
+<h3>Disponivel para entrega</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://amoradoceria.com.br/wp-content/uploads/2023/03/geladinho-de-pudim.jpg" alt="Pudim">
+<h2>Pudim</h2>
+<p>Geladinho de pudim.</p>
+<p>Preço: R$ 4,00</p>
+<h3>Disponivel para entrega</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://i.pinimg.com/originals/8f/fa/c9/8ffac9f45581aa60c3458503a17b9d09.jpg" alt="Maracujá com Nuttela">
+<h2>Maracujá com Nuttela</h2>
+<p>Geladinho de Maracujá com Nuttela.</p>
+<p>Preço: R$ 4,00</p>
+<h3>somente por incomenda!!!</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://amoradoceria.com.br/wp-content/uploads/2023/01/geladinho-de-pacoca.jpeg" alt="Paçoquinha">
+<h2>Paçoquinha</h2>
+<p>Geladinho de Paçoquinha.</p>
+<p>Preço: R$ 4,00</p>
+<h3>somente por incomenda!!!</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://hotmenu.com.br/arquivos/PROD_592_593_20210802_100102.jpg" alt="Musse de morango recheado com casquinha de chocolate branco">
+<h2>Musse de morango recheado com casquinha de chocolate branco</h2>
+<p>Geladinho de Musse de morango recheado com cadsquinha de chocolate branco.</p>
+<p>Preço: R$ 4,00</p>
+<h3>somente por incomenda!!!</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://geladinhogourmet.xyz/wp-content/uploads/2018/12/29092883_196827780921491_2666203207868350464_n.jpg" alt="Coco queimado">
+<h2>Coco queimado </h2>
+<p>Geladinho de Coco queimado.</p>
+<p>Preço: R$ 4,00</p>
+<h3>Somente por incomenda!!!</h3>
+</div>
+
+<div class="geladinho">
+<img src="https://culinariadesucesso.com/wp-content/uploads/2023/09/geladinho-gourmet-ouro-branco.png" alt="Ouro branco">
+<h2>Ouro branco </h2>
+<p>Geladinho de Ouro branco.</p>
+<p>Preço: R$ 4,00</p>
+<h3>somente por incomenda!!!</h3>
+</div>
+
+</div>
+<div id="promocao-container">
+<h2>Promoção de 10% de desconto na compra de 5 geladinhos:</h2>
+<ul>
+<li>
+<label for="geladinhoQuantidade">Escolha a quantidade:</label>
+<select class="quantity-select" id="geladinhoQuantidade">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="40">40</option>
+</select>
+</li>
+</ul>
+<button id="calcular-desconto" class="calculate-button" style="margin-top: 10px;">Calcular Desconto</button>
+<p id="resultado"></p>
+</div>
+
+<!-- Seção de Contato -->
+<div id="contato-container" class="contact-container">
+  <h2>Entre em contato conosco:</h2>
+  <p>Tire suas dúvidas ou faça seu pedido através do WhatsApp.</p>
+  <a href="https://api.whatsapp.com/send?phone=556791995945" target="_blank" class="contact-button">
+    <i class="fab fa-whatsapp"></i> Contatar via WhatsApp
+  </a>
+</div>
+
+<script>
+        // Adicione a lógica para calcular o desconto
+        document.getElementById("calcular-desconto").addEventListener("click", function () {
+            const precoUnitario = 4.00; // Preço unitário de um geladinho
+            const quantidade = parseInt(document.getElementById("geladinhoQuantidade").value);
+            const precoTotal = quantidade * precoUnitario;
+            const desconto = quantidade >= 5 ? 0.1 * precoTotal : 0;
+            const precoComDesconto = precoTotal - desconto;
+
+            document.getElementById("resultado").innerHTML = `Preço total: R$ ${precoTotal.toFixed(2)}`;
+            document.getElementById("resultado").innerHTML += `<br>Desconto (10%): R$ ${desconto.toFixed(2)}`;
+            document.getElementById("resultado").innerHTML += `<br>Preço com desconto: R$ ${precoComDesconto.toFixed(2)}`;
+        });
+             // Função para fechar o alerta
+        function closeAlert() {
+          var alertContainer = document.getElementById("alert-container");
+          alertContainer.style.display = "none";
+        }
+        
+        // Função para exibir o alerta após 5 segundos
+        function showAlertAfterDelay() {
+          var alertContainer = document.getElementById("alert-container");
+          alertContainer.style.display = "block";
+          
+          // Feche o alerta após 6 segundos (6000 milissegundos)
+          setTimeout(closeAlert, 6000);
+        }
+        
+        // Exibir o alerta após 5 segundos
+        setTimeout(showAlertAfterDelay, 5000);
+
+    </script>
+</body>
+</html>
