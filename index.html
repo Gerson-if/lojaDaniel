@@ -127,7 +127,8 @@
     }
   }
   <style>
-/* ... promoção ... */
+
+/* ... estilo da promoção ... */
 
 #promocao-container {
     background-color: rgba(255, 255, 255, 0.9);
@@ -225,11 +226,55 @@
 }
 
 /* Estilos responsivos */
+
 @media (max-width: 768px) {
   .contact-container {
     max-width: 100%;
   }
 }
+ /* estilos de animaçoes dos geladinhos apromorados*/
+ .calculate-button, .contact-button {
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.calculate-button:hover, .contact-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05); /* Aumenta o botão em 5% quando o mouse passa por cima */
+}
+body {
+    animation: backgroundChange 20s infinite alternate;
+}
+
+@keyframes backgroundChange {
+    0% {
+        background-color: #ff6347; /* Cor inicial */
+    }
+    100% {
+        background-color: #3498db; /* Cor final */
+    }
+}
+.geladinho h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    transition: font-size 0.3s ease, transform 0.3s ease;
+}
+.geladinho {
+    transition: transform 0.3s ease;
+}
+
+.geladinho:hover {
+    transform: scale(1.05); /* Aumenta a escala em 5% quando o mouse passa por cima */
+}
+
+
+
 
 
 </style>
@@ -237,27 +282,30 @@
 </head>
 <body>
 <header>
-<h1>Cardápio de Geladinhos Gourmet</h1>
+<h1>Cardápio de Geladinhos Gourmet Da Nessah</h1>
 </header>
 <div id="alert-container" class="alert">
 <span class="closebtn" onclick="closeAlert()">&times;</span>
 <strong>Promoção:</strong> Ganhe 10% de desconto na compra de 5 geladinhos ou mais!
 </div>
 <div class="menu-container">
+
 <div class="geladinho">
 <img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2021/12/geladinhomorango.jpg" alt="Musse de morango com geleia de morango">
 <h2>Mousse de morango com geleia de morango</h2>
-<p>Delicioso geladinho com sabor de Musse de morango com geleia de morango.</p>
+<p>Delicioso geladinho com sabor de mousse de morango com geleia de morango.</p>
 <p>Preço: R$ 4,00</p>
 <h3>Disponivel para entrega</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://receitasdepesos.com.br/wp-content/uploads/2020/01/dindin-gourmet-de-maracuja%CC%81-640x400-1.jpg" alt="Musse de maracujá com geleia de maracujá">
-<h2>Musse de maracujá com geleia de maracujá</h2>
-<p>Geladinho de Musse de maracujá com geleia de maracujá.</p>
+<h2>Mousse de maracujá com geleia de maracujá</h2>
+<p>Geladinho de Mousse de maracujá com geleia de maracujá.</p>
 <p>Preço: R$ 4,00</p>
 <h3>Disponivel para entrega</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://sorvete.frutinho.com.br/imagens/fornecedor-de-geladinho-de-amendoim.jpg" alt="Musse de maracujá puro">
 <h2>Mousse de maracujá puro</h2>
@@ -265,6 +313,23 @@
 <p>Preço: R$ 4,00</p>
 <h3>Disponivel para entrega</h3>
 </div>
+
+<div class="geladinho">
+  <img src="https://saboreiereceitas.com.br/thumbnails/geladinho-gourmet-de-abacaxi-para-fazer-e-vender-doce-sal-e-etc-receitas-caseiras-Zr6RXP-HE4w.jpg" alt="Musse de maracujá puro">
+  <h2>Geladinho de abacaxi</h2>
+  <p>Geladinho refrescante de Abacaxi.</p>
+  <p>Preço: R$ 4,00</p>
+  <h3>Disponivel para entrega</h3>
+  </div>
+
+  <div class="geladinho">
+    <img src="https://anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3259-ca0a74033f4b6e5e01ee662221925cc2.jpg" alt="Musse de maracujá puro">
+    <h2>Mousse de morango puro</h2>
+    <p>Geladinho refrescante de abacaxi.</p>
+    <p>Preço: R$ 4,00</p>
+    <h3>Disponivel para entrega</h3>
+    </div>
+
 <div class="geladinho">
 <img src="https://amoradoceria.com.br/wp-content/uploads/2023/03/geladinho-de-pudim.jpg" alt="Pudim">
 <h2>Pudim</h2>
@@ -272,6 +337,7 @@
 <p>Preço: R$ 4,00</p>
 <h3>Disponivel para entrega</h3>
 </div>
+
 <div class="geladinho">
 <img src="imagens/nutella.jpg" alt="Maracujá com Nuttela">
 <h2>Maracujá com Nutella</h2>
@@ -279,6 +345,7 @@
 <p>Preço: R$ 4,00</p>
 <h3>somente por encomenda!!!</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://amoradoceria.com.br/wp-content/uploads/2023/01/geladinho-de-pacoca.jpeg" alt="Paçoquinha">
 <h2>Paçoquinha</h2>
@@ -286,13 +353,15 @@
 <p>Preço: R$ 4,00</p>
 <h3>somente por encomenda!!!</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://hotmenu.com.br/arquivos/PROD_592_593_20210802_100102.jpg" alt="Musse de morango recheado com casquinha de chocolate branco">
-<h2>Musse de morango recheado com casquinha de chocolate branco</h2>
+<h2>Mousse de morango recheado com casquinha de chocolate branco</h2>
 <p>Geladinho de Musse de morango recheado com casquinha de chocolate branco.</p>
 <p>Preço: R$ 4,00</p>
 <h3>somente por encomenda!!!</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://geladinhogourmet.xyz/wp-content/uploads/2018/12/29092883_196827780921491_2666203207868350464_n.jpg" alt="Coco queimado">
 <h2>Coco queimado </h2>
@@ -300,6 +369,7 @@
 <p>Preço: R$ 4,00</p>
 <h3>Somente por encomenda!!!</h3>
 </div>
+
 <div class="geladinho">
 <img src="https://culinariadesucesso.com/wp-content/uploads/2023/09/geladinho-gourmet-ouro-branco.png" alt="Ouro branco">
 <h2>Ouro branco </h2>
@@ -307,6 +377,7 @@
 <p>Preço: R$ 4,00</p>
 <h3>somente por encomenda!!!</h3>
 </div>
+
 </div>
 <div id="promocao-container">
 <h2>Promoção de 10% de desconto na compra de 5 geladinhos:</h2>
@@ -340,7 +411,11 @@
 <option value="23">23</option>
 <option value="24">24</option>
 <option value="25">25</option>
-<option value="40">40</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="40">30</option>
 </select>
 </li>
 </ul>
