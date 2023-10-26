@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cardápio de Geladinhos Gourmet</title>
+<link rel="icon" href="imagens/sabor3.jpg" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=8ud5-43dZGFNbU_fjDaY-JG-O4dYUixMYgTdecs081vowDfSoVDqK8bSj4pAXC2CL_BkHRkNVJ8zZu8A0bybug" charset="UTF-8"></script><script type="text/javascript" src charset="UTF-8"></script><style>
+<script type="" charset="UTF-8"></script><script type="text/javascript" src charset="UTF-8"></script><style>
         body {
             font-family: Arial, sans-serif;
             background: url('seu_plano_de_fundo.jpg') no-repeat center center fixed;
@@ -34,6 +35,7 @@
         }
 
         .geladinho {
+            position: relative;
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -55,6 +57,17 @@
         .geladinho img {
             max-width: 100%;
             height: auto;
+        }
+
+        /*alteração aqui icone geladinho*/
+        availability-icon {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .availability-icon i {
+            font-size: 1.2em;
         }
 
         #promocao-container {
@@ -135,15 +148,20 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    margin: 20px auto; /* Centraliza a promoção na página */
-    max-width: 400px; /* Define a largura máxima da promoção para telas menores */
+    margin: 20px auto;
+    max-width: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#promocao-container:hover {
+    background-color: #f2f2f2; /* Mude a cor de fundo quando o mouse passar por cima */
 }
 
 #promocao-container h2 {
     font-size: 1.8em;
     margin: 10px 0;
-    color: #333; /* Cor do título da promoção */
+    color: #333;
 }
 
 .quantity-select {
@@ -152,7 +170,7 @@
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ddd; /* Adiciona uma borda à caixa de seleção */
+    border: 1px solid #ddd;
 }
 
 .calculate-button {
@@ -164,7 +182,6 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin: 10px 0; /* Adiciona um espaço entre a caixa de seleção e o botão */
 }
 
 .calculate-button:hover {
@@ -174,10 +191,38 @@
 #resultado {
     font-size: 1.5em;
     margin-top: 10px;
-    color: #333; /* Cor do resultado */
+    color: #333;
+}
+.quantity-select {
+    font-size: 1.2em;
+    width: 60px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: linear-gradient(90deg, transparent 50%, #2ecc71 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background 0.3s ease;
 }
 
+.quantity-select:hover {
+    background-position: left bottom;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+
 /* Estilos para a seção de contato */
+
 .contact-container {
   text-align: center;
   margin: 20px auto;
@@ -273,8 +318,49 @@ body {
     transform: scale(1.05); /* Aumenta a escala em 5% quando o mouse passa por cima */
 }
 
+/* estilo para o h3 dos geladinhos disponivies */
+.geladinho {
+    position: relative;
+    text-align: center; /* Centralize o conteúdo na div */
+    padding-bottom: 20px; /* Adicione espaço abaixo do conteúdo do geladinho */
+    overflow: hidden; /* Adicione overflow:hidden para manter o conteúdo dentro dos limites da div */
+}
 
+.aviso-disponibilidade {
+    background-color: #27ae60; /* Cor de fundo verde forte */
+    color: #fff;
+    font-size: 1em; /* Reduza o tamanho da fonte */
+    padding: 8px; /* Reduza o preenchimento */
+    border-radius: 5px;
+    position: absolute;
+    bottom: 15px; /* Ajuste a distância do fundo */
+    left: 15px; /* Ajuste a distância da esquerda */
+    right: 15px; /* Ajuste a distância da direita */
+    transform: scale(1);
+    animation: pulse 1s infinite;
+}
+.aviso-encomenda {
+    background-color: red; /* Cor de fundo verde forte */
+    color: white;
+    font-size: 1em; /* Reduza o tamanho da fonte */
+    padding: 8px; /* Reduza o preenchimento */
+    border-radius: 5px;
+    position: absolute;
+    bottom: 15px; /* Ajuste a distância do fundo */
+    left: 15px; /* Ajuste a distância da esquerda */
+    right: 15px; /* Ajuste a distância da direita */
+    transform: scale(1);
+    animation: pulse 1s infinite;
+}
 
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Reduza a escala para evitar ultrapassar os limites da div */
+    }
+}
 
 
 </style>
@@ -290,95 +376,119 @@ body {
 </div>
 <div class="menu-container">
 
-<div class="geladinho">
-<img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2021/12/geladinhomorango.jpg" alt="Musse de morango com geleia de morango">
-<h2>Mousse de morango com geleia de morango</h2>
-<p>Delicioso geladinho com sabor de mousse de morango com geleia de morango.</p>
-<p>Preço: R$ 4,00</p>
-<h3>Disponivel para entrega</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://receitasdepesos.com.br/wp-content/uploads/2020/01/dindin-gourmet-de-maracuja%CC%81-640x400-1.jpg" alt="Musse de maracujá com geleia de maracujá">
-<h2>Mousse de maracujá com geleia de maracujá</h2>
-<p>Geladinho de Mousse de maracujá com geleia de maracujá.</p>
-<p>Preço: R$ 4,00</p>
-<h3>Disponivel para entrega</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://sorvete.frutinho.com.br/imagens/fornecedor-de-geladinho-de-amendoim.jpg" alt="Musse de maracujá puro">
-<h2>Mousse de maracujá puro</h2>
-<p>Geladinho refrescante de maracujá puro.</p>
-<p>Preço: R$ 4,00</p>
-<h3>Disponivel para entrega</h3>
-</div>
-
-<div class="geladinho">
-  <img src="https://saboreiereceitas.com.br/thumbnails/geladinho-gourmet-de-abacaxi-para-fazer-e-vender-doce-sal-e-etc-receitas-caseiras-Zr6RXP-HE4w.jpg" alt="Musse de maracujá puro">
-  <h2>Geladinho de abacaxi</h2>
-  <p>Geladinho refrescante de Abacaxi.</p>
-  <p>Preço: R$ 4,00</p>
-  <h3>Disponivel para entrega</h3>
-  </div>
-
-  <div class="geladinho">
-    <img src="https://anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3259-ca0a74033f4b6e5e01ee662221925cc2.jpg" alt="Musse de maracujá puro">
-    <h2>Mousse de morango puro</h2>
-    <p>Geladinho refrescante de abacaxi.</p>
+    <div class="geladinho">
+    <img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2021/12/geladinhomorango.jpg" alt="Musse de morango com geleia de morango">
+    <h2>Mousse de morango com geleia de morango</h2>
+    <p>Delicioso geladinho com sabor de mousse de morango com geleia de morango.</p>
     <p>Preço: R$ 4,00</p>
-    <h3>Disponivel para entrega</h3>
+      <div class="availability-icon">
+        <i class="fas fa-check-circle" style="color: #27ae60;"></i> Disponível
+      </div>
     </div>
 
-<div class="geladinho">
-<img src="https://amoradoceria.com.br/wp-content/uploads/2023/03/geladinho-de-pudim.jpg" alt="Pudim">
-<h2>Pudim</h2>
-<p>Geladinho de pudim.</p>
-<p>Preço: R$ 4,00</p>
-<h3>Disponivel para entrega</h3>
+  <div class="geladinho">
+
+    <img src="https://receitasdepesos.com.br/wp-content/uploads/2020/01/dindin-gourmet-de-maracuja%CC%81-640x400-1.jpg" alt="Musse de maracujá com geleia de maracujá">
+    <h2>Mousse de maracujá com geleia de maracujá</h2>
+    <p>Desfrute da combinação perfeita de sabores tropicais com o nosso Mousse de Maracujá com Geleia de Maracujá. Este geladinho gourmet é uma explosão de frescor e doçura em cada mordida.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-check-circle" style="color: #27ae60;"></i> Disponível Para Entrega
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://sorvete.frutinho.com.br/imagens/fornecedor-de-geladinho-de-amendoim.jpg" alt="Musse de maracujá puro">
+    <h2>Mousse de maracujá puro</h2>
+    <p>A mistura de maracujá fresco e suculento combinada com a textura aveludada do geladinho cria um contraste harmonioso que é simplesmente irresistível.</p>
+    <p>Preço: R$ 4,00</p>
+       <div class="availability-icon">
+        <i class="fas fa-check-circle" style="color: #27ae60;"></i> Disponível
+       </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://saboreiereceitas.com.br/thumbnails/geladinho-gourmet-de-abacaxi-para-fazer-e-vender-doce-sal-e-etc-receitas-caseiras-Zr6RXP-HE4w.jpg" alt="Musse de maracujá puro">
+    <h2>Geladinho de abacaxi</h2>
+    <p>A combinação de suavidade e acidez do abacaxi com a textura gelada é como uma explosão de frescor no paladar.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-check-circle" style="color: #27ae60;"></i> Disponível
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-3259-ca0a74033f4b6e5e01ee662221925cc2.jpg" alt="Musse de maracujá puro">
+    <h2>Mousse de morango puro</h2>
+    <p>O Mousse de Morango Puro é uma sobremesa que celebra a doçura e o sabor autêntico dos morangos. É uma verdadeira indulgência que cativa o paladar com a suavidade e a intensidade dos morangos maduros. </p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-check-circle" style="color: #27ae60;"></i> Disponível
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://amoradoceria.com.br/wp-content/uploads/2023/03/geladinho-de-pudim.jpg" alt="Pudim">
+    <h2>Pudim</h2>
+    <p>O Geladinho Gourmet de Pudim é uma sobremesa que combina a tradicional suavidade e sabor do pudim com a refrescância  de um geladinho.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-check-circle " style="color: #27ae60;"></i> Disponível
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://i.pinimg.com/1200x/6e/ab/15/6eab15d422aaeb02a8c8f8e6aa356255.jpg" alt="Maracujá com Nuttela">
+    <h2>Maracujá com Nutella</h2>
+    <p>Geladinho de maracujá com nuttela a refrescância do maracujá se une à riqueza e à indulgência do creme de avelã da Nutella para criar uma experiência sensorial que desperta os sentidos.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-car" style="color: red;"></i> Somente por Encomenda
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://amoradoceria.com.br/wp-content/uploads/2023/01/geladinho-de-pacoca.jpeg" alt="Paçoquinha">
+    <h2>Paçoquinha</h2>
+    <p>Geladinho de Paçoquinha O contraste entre a doçura da paçoquinha e a sua característica crocância com a suavidade do geladinho é simplesmente divino</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-car" style="color: red;"></i> Somente por Encomenda
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://i.pinimg.com/736x/6a/8d/24/6a8d243d38a3ab5bc8ac3475d4a1c1e8.jpg" alt="Musse de morango recheado com casquinha de chocolate branco">
+    <h2>Mousse de morango recheado com casquinha de chocolate branco</h2>
+    <p>Geladinho de Musse de morango recheado com casquinha de chocolate branco.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-car " style="color: red;"></i> Somente por Encomenda
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://geladinhogourmet.xyz/wp-content/uploads/2018/12/29092883_196827780921491_2666203207868350464_n.jpg" alt="Coco queimado">
+    <h2>Coco queimado </h2>
+    <p>O Geladinho Gourmet de Coco Queimado é uma sobremesa que combina o sabor tostado e caramelizado do coco com a refrescância do geladinho.</p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-car" style="color: red;"></i> Somente por Encomenda
+      </div>
+    </div>
+
+    <div class="geladinho">
+    <img src="https://culinariadesucesso.com/wp-content/uploads/2023/09/geladinho-gourmet-ouro-branco.png" alt="Ouro branco">
+    <h2>Ouro branco </h2>
+    <p>O Geladinho de Ouro Branco é uma sobremesa deliciosa que combina a cremosidade do chocolate branco com a refrescância do geladinho. </p>
+    <p>Preço: R$ 4,00</p>
+      <div class="availability-icon">
+        <i class="fas fa-car" style="color: red;"></i> Somente por Encomenda
+      </div>
+    </div>
+
 </div>
 
-<div class="geladinho">
-<img src="imagens/nutella.jpg" alt="Maracujá com Nuttela">
-<h2>Maracujá com Nutella</h2>
-<p>Geladinho de Maracujá com Nuttela.</p>
-<p>Preço: R$ 4,00</p>
-<h3>somente por encomenda!!!</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://amoradoceria.com.br/wp-content/uploads/2023/01/geladinho-de-pacoca.jpeg" alt="Paçoquinha">
-<h2>Paçoquinha</h2>
-<p>Geladinho de Paçoquinha.</p>
-<p>Preço: R$ 4,00</p>
-<h3>somente por encomenda!!!</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://hotmenu.com.br/arquivos/PROD_592_593_20210802_100102.jpg" alt="Musse de morango recheado com casquinha de chocolate branco">
-<h2>Mousse de morango recheado com casquinha de chocolate branco</h2>
-<p>Geladinho de Musse de morango recheado com casquinha de chocolate branco.</p>
-<p>Preço: R$ 4,00</p>
-<h3>somente por encomenda!!!</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://geladinhogourmet.xyz/wp-content/uploads/2018/12/29092883_196827780921491_2666203207868350464_n.jpg" alt="Coco queimado">
-<h2>Coco queimado </h2>
-<p>Geladinho de Coco queimado.</p>
-<p>Preço: R$ 4,00</p>
-<h3>Somente por encomenda!!!</h3>
-</div>
-
-<div class="geladinho">
-<img src="https://culinariadesucesso.com/wp-content/uploads/2023/09/geladinho-gourmet-ouro-branco.png" alt="Ouro branco">
-<h2>Ouro branco </h2>
-<p>Geladinho de Ouro branco.</p>
-<p>Preço: R$ 4,00</p>
-<h3>somente por encomenda!!!</h3>
-</div>
-
-</div>
 <div id="promocao-container">
 <h2>Promoção de 10% de desconto na compra de 5 geladinhos:</h2>
 <ul>
@@ -430,6 +540,7 @@ body {
 <i class="fab fa-whatsapp"></i> Contatar via WhatsApp
 </a>
 </div>
+
 <script>
         // Adicione a lógica para calcular o desconto
         document.getElementById("calcular-desconto").addEventListener("click", function () {
