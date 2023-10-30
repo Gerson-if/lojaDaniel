@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Geladinho</title>
+    <style>
+        /* Estilos CSS para tornar a página bonita e responsiva */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .pedido-form {
+            text-align: left;
+        }
+
+        .pedido-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .pedido-form input,
+        .pedido-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .pedido-form button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pedido-form button:hover {
+            background-color: #2684ce;
+        }
+
+        .quantidade-sabor {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Faça seu Pedido de Geladinho</h1>
+        <form class="pedido-form" id="geladinho-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="endereco">Endereço de Entrega:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="sabores">Sabores desejados:</label>
+            <select id="sabores" name="sabores" multiple required>
+                <option value="Mousse de morango com geleia de morango">Mousse de morango com geleia de morango</option>
+                <option value="Mousse de maracujá com geleia de maracujá">Mousse de maracujá com geleia de maracujá</option>
+                <!-- Adicione mais opções de sabores aqui -->
+            </select>
+
+            <div id="quantidades">
+                <!-- Espaço para adicionar campos de quantidade dinamicamente -->
+            </div>
+
+            <label for="pagamento">Forma de Pagamento:</label>
+            <select id="pagamento" name="pagamento" required>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="PIX">PIX</option>
+            </select>
+
+            <button type="button" id="preparar-pedido">Preparar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        // Atualiza os campos de quantidade de acordo com os sabores selecionados
+        document.getElementById('sabores').addEventListener('change', function() {
+            const saboresSelecionados = Array.from(this.selectedOptions).map(option => option.value);
+            const quantidadeItems = document.querySelectorAll('.quantidade-sabor');
+            
+            quantidadeItems.forEach(item => {
+                const select = item.querySelector('select');
+                if (saboresSelecionados.includes(select.name)) {
+                    item.style.display = 'block';
+                } else {
+                    select.value = '0';
+                    item.style display = 'none';
+                }
+            });
+            
+            // Adiciona campos de quantidade para sabores selecionados
+            saboresSelecionados.forEach(sabor => {
+                if (!document.getElementById(`quantidade-${sabor}`)) {
+                    const quantidadeDiv = document.createElement('div');
+                    quantidadeDiv.className = 'quantidade-sabor';
+                    quantidadeDiv.innerHTML = `
+                        <label for="quantidade-${sabor}">${sabor}:</label>
+                        <select id="quantidade-${sabor}" name="${sabor}">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        `;
+                        document.getElementById('quantidades').appendChild(quantidadeDiv);
+                    }
+                });
+            });
+            
+            // Cria o link do WhatsApp com a mensagem do pedido
+            document.getElementById('preparar-pedido').addEventListener('click', function() {
+                const nome = document.getElementById('nome').value;
+                const endereco = document.getElementById('endereco').value;
+                const saboresSelecionados = Array.from(document.getElementById('sabores').selectedOptions).map(option => option.value);
+                const formaPagamento = document.getElementById('pagamento').value;
+                let mensagem = `Pedido de Geladinho:
+Nome: ${nome}
+Endereço de Entrega: ${endereco}
+Sabores: ${saboresSelecionados.join(', ')}
+Quantidades por sabor:`;
+                
+                saboresSelecionados.forEach(sabor => {
+                    const quantidade = document.getElementById(`quantidade-${sabor}`).value;
+                    mensagem += `\n${sabor}: ${quantidade}`;
+                });
+                
+                mensagem += `\nForma de Pagamento: ${formaPagamento}`;
+                
+                // Substitua o número de telefone abaixo pelo número do WhatsApp para onde você deseja enviar os pedidos.
+                const numeroWhatsApp = 'SEU_NUMERO_DO_WHATSAPP';
+                const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+                window.location.href = linkWhatsApp;
+            });
+        </script>
+    </body>
+</html>
