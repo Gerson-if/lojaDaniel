@@ -139,29 +139,30 @@
         });
 
             // Cria o link do WhatsApp com a mensagem do pedido
-            document.getElementById('preparar-pedido').addEventListener('click', function() {
-            const nome = document.getElementById('nome').value;
-            const endereco = document.getElementById('endereco').value;
-            const saboresSelecionados = Array.from(document.getElementById('sabores').selectedOptions).map(option => option.value);
+                document.getElementById('preparar-pedido').addEventListener('click', function() {
+                const nome = document.getElementById('nome').value;
+                const endereco = document.getElementById('endereco').value;
+                const saboresSelecionados = Array.from(document.getElementById('sabores').selectedOptions).map(option => option.value);
 
-            const formaPagamento = document.getElementById('forma-pagamento').value;
+                const formaPagamento = document.getElementById('forma-pagamento').value;
 
-            let mensagem = '\u{1F366} *Pedido de Geladinho* \u{1F366}\n\n';
-            mensagem += '\u{1F464} *Nome:* ' + nome + '\n';
-            mensagem += '\u{1F4CD} *Endereço de Entrega:* ' + endereco + '\n';
-            mensagem += '\u{1F4B0} *Forma de Pagamento:* ' + formaPagamento + '\n\n';
+                let mensagem = '\u{1F368} *Pedido de Geladinho* \u{1F368}\n\n';
+                mensagem += '\u{1F464} *Nome:* ' + nome + '\n';
+                mensagem += '\u{1F4CD} *Endereço de Entrega:* ' + endereco + '\n';
+                mensagem += '\u{1F4B0} *Forma de Pagamento:* ' + formaPagamento + '\n\n';
 
-            mensagem += '\u{1F368} *Sabores Pedidos:* \n';
+                mensagem += '\u{1F368} *Geladinhos Solicitados:*\u{1F368}  \n';
 
-            saboresSelecionados.forEach(sabor => {
-                const quantidade = document.getElementById(`quantidade-${sabor}`).value;
-                mensagem += `*${sabor}*: ${quantidade} \u{1F366}\n`;
+                saboresSelecionados.forEach(sabor => {
+                    const quantidade = document.getElementById(`quantidade-${sabor}`).value;
+                    mensagem += `\u{2192} *${sabor}*: ${quantidade}\n`;
+                });
+
+                const numeroWhatsApp = '556791995945';
+                const linkWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(mensagem);
+                window.location.href = linkWhatsApp;
             });
 
-            const numeroWhatsApp = '556791995945';
-            const linkWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(mensagem);
-            window.location.href = linkWhatsApp;
-        });
             
     </script>
 
